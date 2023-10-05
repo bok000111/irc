@@ -6,7 +6,7 @@
 #    By: jbok <jbok@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 11:20:10 by jbok              #+#    #+#              #
-#    Updated: 2023/10/05 10:28:06 by jbok             ###   ########.fr        #
+#    Updated: 2023/10/05 11:28:04 by jbok             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME = ircserv
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 SRC_DIR = src
-SRC = main.cpp
+SRC = main.cpp IoHandler.cpp
 OBJ = ${SRC:.cpp=.o}
 OBJ_DIR = obj
-INCLUDE = ft_irc.hpp
+INCLUDE = ft_irc.hpp IoHandler.hpp
 INCLUDE_DIR = include
 
 all:	${NAME}

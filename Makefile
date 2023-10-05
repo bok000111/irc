@@ -6,7 +6,7 @@
 #    By: jbok <jbok@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 11:20:10 by jbok              #+#    #+#              #
-#    Updated: 2023/10/05 11:28:04 by jbok             ###   ########.fr        #
+#    Updated: 2023/10/05 11:36:32 by jbok             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,17 @@ INCLUDE_DIR = include
 
 all:	${NAME}
 
-${NAME}:	${OBJ_DIR}/${OBJ}
+${NAME}:	$(addprefix ${OBJ_DIR}/, ${OBJ})
 	${CXX} ${CXXFLAGS}  $^ -o $@ 
 
-${OBJ_DIR}/%.o:	${SRC_DIR}/%.cpp
+${OBJ_DIR}/${OBJ}: $(addprefix ${SRC_DIR}/, ${SRC})
 	if [ ! -d ${OBJ_DIR} ]; then \
   		mkdir "${OBJ_DIR}"; \
 	fi
-	${CXX} -c ${CXXFLAGS} $< -o $@ -I${INCLUDE_DIR}
+	${CXX} -c ${CXXFLAGS} $^ -I${INCLUDE_DIR}
+	mv ${OBJ} ${OBJ_DIR}
 
 clean:
-	${RM} ${OBJ_DIR}/${OBJ}
 	rm -rf ${OBJ_DIR}
 
 fclean:
